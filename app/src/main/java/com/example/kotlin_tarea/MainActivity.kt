@@ -9,8 +9,10 @@ import kotlin.random.Random
 
 class MainActivity() : AppCompatActivity() {
     lateinit var ListaPlantas: MutableList<Any>
+
     var ContadorAgua : Int = 0
     var numeroDePlanta : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,48 +22,58 @@ class MainActivity() : AppCompatActivity() {
     }
 
     fun onFertilizar(view: View){
-        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
-        if (plantaOnScreen is Lavanda){
-            Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
-        }else if(plantaOnScreen is PeaceLily){
-            Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
+        if(ListaPlantas.lastIndex!=-1) {
+            var plantaOnScreen: Any = ListaPlantas.get(numeroDePlanta)
+            if (plantaOnScreen is Lavanda) {
+                Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
+            } else if (plantaOnScreen is PeaceLily) {
+                Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     fun onPodar(view: View){
-        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
-        if (plantaOnScreen is Lavanda){
-            Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
-        }else if(plantaOnScreen is PeaceLily){
-            Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
+        if(ListaPlantas.lastIndex!=-1) {
+            var plantaOnScreen: Any = ListaPlantas.get(numeroDePlanta)
+            if (plantaOnScreen is Lavanda) {
+                Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
+            } else if (plantaOnScreen is PeaceLily) {
+                Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     fun onRegar(view: View){
-        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
-        if (plantaOnScreen is Lavanda){
-            Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
-        }else if(plantaOnScreen is PeaceLily){
-            Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
+        if(ListaPlantas.lastIndex!= -1) {
+            var plantaOnScreen: Any = ListaPlantas.get(numeroDePlanta)
+            if (plantaOnScreen is Lavanda) {
+                Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
+            } else if (plantaOnScreen is PeaceLily) {
+                Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     fun onSiguiente(view: View){
-        if(numeroDePlanta == ListaPlantas.lastIndex ){
-            numeroDePlanta=1
-        }else{
-            numeroDePlanta+=1
+        if(ListaPlantas.lastIndex!= -1) {
+            if (numeroDePlanta == ListaPlantas.lastIndex) {
+                numeroDePlanta = 0
+            } else {
+                numeroDePlanta += 1
+            }
+            txtDisplay(numeroDePlanta)
         }
-        txtDisplay(numeroDePlanta)
     }
 
     fun onAnterior(view: View){
-        if(numeroDePlanta == 0 ){
-            numeroDePlanta=ListaPlantas.lastIndex
-        }else{
-            numeroDePlanta-=1
+        if(ListaPlantas.lastIndex!= -1){
+            if(numeroDePlanta == 0 ){
+                numeroDePlanta=ListaPlantas.lastIndex
+            }else{
+                numeroDePlanta-=1
+            }
+            txtDisplay(numeroDePlanta)
         }
-        txtDisplay(numeroDePlanta)
     }
 
     fun onNuevo(view: View){
