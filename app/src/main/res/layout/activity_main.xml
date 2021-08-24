@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hola"
+        android:textAlignment="center"
+        android:textSize="16pt"
+        app:layout_constraintBottom_toTopOf="@+id/btnNuevo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFertilizar"
+        android:text="Fertilizar"
+        android:onClick="onFertilizar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btnNuevo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNuevo"/>
+
+    <Button
+        android:id="@+id/btnRegar"
+        android:text="Regar"
+        android:onClick="onRegar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNuevo"
+        app:layout_constraintBottom_toTopOf="@id/btnNuevo"/>
+
+    <Button
+        android:id="@+id/btnPodar"
+        android:text="Podar"
+        android:onClick="onPodar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btnNuevo"
+        app:layout_constraintStart_toEndOf="@+id/btnAnterior"
+        app:layout_constraintEnd_toStartOf="@+id/btnSiguiente"/>
+
+
+    <Button
+        android:id="@+id/btnAnterior"
+        android:text="Anterior"
+        android:onClick="onAnterior"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNuevo"/>
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:text="Siguiente"
+        android:onClick="onSiguiente"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNuevo"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnNuevo"
+        android:text="+"
+        android:onClick="onNuevo"
+        android:textSize="14pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAnterior"
+        app:layout_constraintEnd_toStartOf="@+id/btnSiguiente"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
