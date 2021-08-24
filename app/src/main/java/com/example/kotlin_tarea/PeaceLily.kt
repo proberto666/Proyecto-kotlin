@@ -22,13 +22,14 @@ Viva: Boolean, Semillas:Int? ,var NumHojas:Int ): Planta(NivelAgua, NivelFertili
         return "Planta Hidratada con éxito"
     }
 
-    fun Fertilizar(){
+    fun Fertilizar(): String{
         NivelFertilizante = 100
         var numRandom = Random.nextInt(0,30)
         if(numRandom>10){
             NumHojas=numRandom-10
-            Crecer(NumHojas)
+
         }
+        return  Crecer(NumHojas)
     }
 
     fun Crecer(num: Int?): String{

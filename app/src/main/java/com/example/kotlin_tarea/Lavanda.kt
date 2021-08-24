@@ -22,13 +22,13 @@ class Lavanda constructor(var nombre:String, NivelAgua: Int, NivelFertilizante: 
         return "Planta Hidratada con éxito"
     }
 
-    fun Fertilizar(){
+    fun Fertilizar(): String{
         NivelFertilizante = 100
         var numRandom = Random.nextInt(0,10)
         if(numRandom>5){
             Altura=numRandom-5
-            Crecer(Altura)
         }
+        return Crecer(Altura)
     }
 
     fun Crecer(cm: Int?): String{

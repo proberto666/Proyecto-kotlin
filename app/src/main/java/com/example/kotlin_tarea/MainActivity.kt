@@ -20,37 +20,65 @@ class MainActivity() : AppCompatActivity() {
     }
 
     fun onFertilizar(view: View){
-        Toast.makeText(this, "Fertilizar no implementado", Toast.LENGTH_SHORT).show()
+        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
+        if (plantaOnScreen is Lavanda){
+            Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
+        }else if(plantaOnScreen is PeaceLily){
+            Toast.makeText(this, plantaOnScreen.Fertilizar(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun onPodar(view: View){
-        Toast.makeText(this, "Podar no implementado", Toast.LENGTH_SHORT).show()
+        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
+        if (plantaOnScreen is Lavanda){
+            Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
+        }else if(plantaOnScreen is PeaceLily){
+            Toast.makeText(this, plantaOnScreen.Podar(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun onRegar(view: View){
-        Toast.makeText(this, "Regar no implementado", Toast.LENGTH_SHORT).show()
+        var plantaOnScreen : Any =ListaPlantas.get(numeroDePlanta)
+        if (plantaOnScreen is Lavanda){
+            Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
+        }else if(plantaOnScreen is PeaceLily){
+            Toast.makeText(this, plantaOnScreen.Regar(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun onSiguiente(view: View){
-        Toast.makeText(this, "Siguiente no implementado", Toast.LENGTH_SHORT).show()
+        if(numeroDePlanta == ListaPlantas.lastIndex ){
+            numeroDePlanta=1
+        }else{
+            numeroDePlanta+=1
+        }
+        txtDisplay(numeroDePlanta)
     }
 
     fun onAnterior(view: View){
-        Toast.makeText(this, "Anterior no implementado", Toast.LENGTH_SHORT).show()
+        if(numeroDePlanta == 0 ){
+            numeroDePlanta=ListaPlantas.lastIndex
+        }else{
+            numeroDePlanta-=1
+        }
+        txtDisplay(numeroDePlanta)
     }
 
     fun onNuevo(view: View){
-       var numRandom = Random.nextInt(0,1)
-        if(numRandom==0){
+       var numRandom = Random.nextInt(0,10)
+        if(numRandom%2 == 0){
             var plantaObjeto = PeaceLily("Cuna de Moises", 0, 0, true,
                 0, 1)
             ListaPlantas.add(plantaObjeto)
-        }else{
-            var plantaObjeto=Lavanda("Lavanda", 0,0,true,0,
-            10)
+        }else {
+            var plantaObjeto = Lavanda(
+                "Lavanda", 0, 0, true, 0,
+                10
+            )
             ListaPlantas.add(plantaObjeto);
         }
-        txtDisplay(ListaPlantas.lastIndex+1)
+        numeroDePlanta = ListaPlantas.lastIndex
+        txtDisplay(numeroDePlanta)
     }
 
     fun txtDisplay(index: Int){
@@ -65,7 +93,5 @@ class MainActivity() : AppCompatActivity() {
                     "\n # de hojas: " + plantaOnScreen.NumHojas +
                     "\n Viva?: "+plantaOnScreen.Viva
         }
-
-
     }
 }
