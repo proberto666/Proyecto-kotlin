@@ -8,15 +8,14 @@ import android.widget.Toast
 import kotlin.random.Random
 
 class MainActivity() : AppCompatActivity() {
-    lateinit var ListaPlantas: MutableList<Any>
-
+    lateinit var ListaPlantas: MutableList<Planta>
     var ContadorAgua : Int = 0
     var numeroDePlanta : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ListaPlantas= mutableListOf<Any>()
+        ListaPlantas= mutableListOf<Planta>()
         var txtInfo = findViewById<TextView>(R.id.txtInfo)
         txtInfo.text = "Crea una nueva planta!"
     }
@@ -79,14 +78,13 @@ class MainActivity() : AppCompatActivity() {
     fun onNuevo(view: View){
        var numRandom = Random.nextInt(0,10)
         if(numRandom%2 == 0){
-            var plantaObjeto = PeaceLily("Cuna de Moises", 0, 0, true,
-                0, 1)
+            var plantaObjeto = PeaceLily(nombreAleatorio(), 0, 0, true,
+                0, Random.nextInt(1,10))
             ListaPlantas.add(plantaObjeto)
         }else {
             var plantaObjeto = Lavanda(
-                "Lavanda", 0, 0, true, 0,
-                10
-            )
+                nombreAleatorio(), 0, 0, true, 0,
+                Random.nextInt(10,15))
             ListaPlantas.add(plantaObjeto);
         }
         numeroDePlanta = ListaPlantas.lastIndex
@@ -105,5 +103,13 @@ class MainActivity() : AppCompatActivity() {
                     "\n # de hojas: " + plantaOnScreen.NumHojas +
                     "\n Viva?: "+plantaOnScreen.Viva
         }
+    }
+
+    fun nombreAleatorio():String{
+        var numRandom = Random.nextInt(0,19)
+        var Nombres : List<String> = listOf("Luna", "Nala", "Kira", "Lola",
+            "Bimba", "Mia", "Noa", "Kiara", "Dana", "Gala", "Coco", "Thor", "Max",
+            "Rocky", "Toby", "Simba", "Leo", "Lucas", "Zeus", "Bruno")
+        return Nombres.get(numRandom)
     }
 }
